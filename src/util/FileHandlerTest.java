@@ -1,6 +1,6 @@
 package util;
 import contacts.Contact;
-
+import java.util.List;
 import java.util.ArrayList;
 
 public class FileHandlerTest {
@@ -16,5 +16,13 @@ public class FileHandlerTest {
 
         contactsFile.writeToFile(contact.addContact());
         contactsFile.writeToFile(contact1.addContact());
+
+        List<String> lines = contactsFile.readFiles();
+
+                for(String line : lines){
+                    System.out.println(line);
+                }
+
+
     }
 }

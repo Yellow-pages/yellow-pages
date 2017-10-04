@@ -1,22 +1,21 @@
 package util;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.util.List;
 
 public class FileHandler {
     private String directory;
     private String filename;
+    private Path path;
 
     public FileHandler(String directory, String filename) {
         this.directory = directory;
         this.filename = filename;
+        this.path = Paths.get(this.directory, this.filename);
     }
 
     public boolean createDirectory() {
-        Path path = Paths.get(this.directory, this.filename);
         try {
             if (!Files.exists(path.getParent())) {
                 Files.createDirectory(path.getParent());
@@ -32,10 +31,20 @@ public class FileHandler {
 
     public void writeToFile(List<String> contents) {
     try {
-        Files.write(Paths.get(directory, filename), contents);
+        Files.write(this.path, contents, StandardOpenOption.APPEND);
     }
     catch(IOException e){
         System.out.printf("Error: %s\n", e.getMessage());
+        }
+    }
+
+    public List<String> readFiles(){
+        try {
+            List<String> myContacts = Files.readAllLines(this.path);
+            return myContacts;
+        }catch (IOException e){
+            System.out.printf("Error: %s\n", e.getMessage());
+            return null;
         }
     }
 

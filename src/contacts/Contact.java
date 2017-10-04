@@ -18,6 +18,8 @@ public class Contact {
         return name + "," + number;
     }
 
+
+
 //    public List addContact() {
 //        ArrayList<String> contact = new ArrayList<>();
 //        contact.add(this.name + "," + this.number);

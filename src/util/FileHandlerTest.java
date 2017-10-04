@@ -9,20 +9,14 @@ public class FileHandlerTest {
 
         Contact contact = new Contact("joe", "111-111-1111");
         Contact contact1 = new Contact("alex", "222-333-4444");
+        Contact contact2 = new Contact("jack", "111=222=3333");
 
 
         contactsFile.createDirectory();
 
-
-        contactsFile.writeToFile(contact.addContact());
-        contactsFile.writeToFile(contact1.addContact());
-
-        List<String> lines = contactsFile.readFiles();
-
-                for(String line : lines){
-                    System.out.println(line);
-                }
-
-
+//
+//        contactsFile.writeToFile(contact.addContact());
+//        contactsFile.writeToFile(contact1.addContact());
+//        contactsFile.writeToFile(contact2.addContact());
     }
 }

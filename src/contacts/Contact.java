@@ -14,9 +14,13 @@ public class Contact {
 
     }
 
-    public List addContact() {
-        ArrayList<String> contact = new ArrayList<>();
-        contact.add(this.name + "," + this.number);
-        return contact;
+    public String toString(){
+        return name + "," + number;
     }
+
+//    public List addContact() {
+//        ArrayList<String> contact = new ArrayList<>();
+//        contact.add(this.name + "," + this.number);
+//        return contact;
+//    }
 }

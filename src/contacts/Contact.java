@@ -1,5 +1,8 @@
 package contacts;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Contact {
     private String name;
     private String number;
@@ -11,14 +14,9 @@ public class Contact {
 
     }
 
-    public void addContact(String contact){
-
+    public List addContact() {
+        ArrayList<String> contact = new ArrayList<>();
+        contact.add(this.name + "," + this.number);
+        return contact;
     }
-
-
-
-//    public String addContact(String name){
-//
-//    }
-
 }

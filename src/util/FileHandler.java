@@ -1,19 +1,21 @@
 package util;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 public class FileHandler {
     private String directory;
     private String filename;
 
-    public FileHandler(String directory, String filename){
+    public FileHandler(String directory, String filename) {
         this.directory = directory;
         this.filename = filename;
     }
 
-    public boolean createDirectory(){
+    public boolean createDirectory() {
         Path path = Paths.get(this.directory, this.filename);
         try {
             if (!Files.exists(path.getParent())) {
@@ -22,13 +24,19 @@ public class FileHandler {
             if (!Files.exists(path)) {
                 Files.createFile(path);
             }
-        }catch (IOException e){
+        } catch (IOException e) {
             return false;
         }
-        return true ;
+        return true;
     }
 
-
-
+    public void writeToFile(List<String> contents) {
+    try {
+        Files.write(Paths.get(directory, filename), contents);
+    }
+    catch(IOException e){
+        System.out.printf("Error: %s\n", e.getMessage());
+        }
+    }
 
 }

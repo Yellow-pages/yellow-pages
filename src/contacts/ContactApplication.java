@@ -14,7 +14,7 @@ public class ContactApplication {
         FileHandler contactsFile = new FileHandler("data", "contacts.txt");
         List<String> contacts = contactsFile.readFiles();
 
-        while(true) {
+
 
             System.out.println("1. View contacts.\n" +
                     "2. Add a new contact.\n" +
@@ -40,7 +40,7 @@ public class ContactApplication {
                     System.out.println("Enter a phone number");
                     String contactNumber = scan.nextLine();
                     Contact contact = new Contact(contactName, contactNumber);
-                    //addContact(contact, contacts);
+//                    addContact(contact, contacts);
                     contacts.add(contact.toString());
                     contactsFile.writeToFile(contacts, true);
                     break;
@@ -48,14 +48,13 @@ public class ContactApplication {
                 case 3: {
                     //loops through array to match user input with data
                     //compare data and user input with if statement
-                    System.out.println("which user?");
+                    //add else statement for when user enters contact that doesn't exist
+                    System.out.println("Who would you like to search for?");
                     String search = scan.nextLine();
                     for (String contact : contactsFile.readFiles()) {
                         String[] contactSplit = contact.split(",");
-                        if (search.equalsIgnoreCase(contactSplit[0])) {
+                        if (search.trim().equalsIgnoreCase(contactSplit[0].trim())) {
                             System.out.println(contactSplit[0] + " | " + contactSplit[1]);
-                        } else {
-
                         }
                     }
                     break;
@@ -64,7 +63,7 @@ public class ContactApplication {
 
                     System.out.println("delete who?");
                     String delete = scan.nextLine();
-
+//new java syntax, loops through array compares content to user input and deletes if matches, in one line
                     contacts.removeIf(contact -> {
                         if (contact.contains(delete)) {
                             System.out.println("Delete " + contact + "?(y/n)");
@@ -77,14 +76,8 @@ public class ContactApplication {
                         }
                         return false;
                     });
-
+                    //deletes contact then rewrite file.
                     contactsFile.writeToFile(contacts, false);
-//                System.out.println("delete");
-//                String delete = scan.nextLine();
-//                for (String contact : contactsFile.readFiles()){
-//                    String[] contactDelete = contacts.remove();
-//                    if (delete.equalsIgnoreCase(contactDelete[0]))
-//                }
                     break;
                 case 5: {
                     System.out.printf("exit");
@@ -92,13 +85,6 @@ public class ContactApplication {
                 }
             }
         }
-//
-//        public static String[] deleteContact(){
-//            if()
-//        }
-   /* public static List addContact(Contact contact, List<String> contacts) {
-        contacts.add(contact.toString());
-        return contacts;
-    }*/
+
     }
-}
+

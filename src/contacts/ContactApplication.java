@@ -14,7 +14,7 @@ public class ContactApplication {
         FileHandler contactsFile = new FileHandler("data", "contacts.txt");
         List<String> contacts = contactsFile.readFiles();
 
-
+        while (true) {
 
             System.out.println("1. View contacts.\n" +
                     "2. Add a new contact.\n" +
@@ -84,7 +84,15 @@ public class ContactApplication {
                     System.exit(0);
                 }
             }
+            System.out.println("");
+            System.out.println("Would you like to continue?" + "y/n");
+            String option = scan.nextLine();
+            if (!option.equalsIgnoreCase("y")) {
+                break;
+            }
+
         }
 
     }
+}
 

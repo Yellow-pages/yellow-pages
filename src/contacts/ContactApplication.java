@@ -15,7 +15,7 @@ public class ContactApplication {
         List<String> contacts = contactsFile.readFiles();
 
 
-
+        while (true) {
             System.out.println("1. View contacts.\n" +
                     "2. Add a new contact.\n" +
                     "3. Search a contact by name.\n" +
@@ -87,4 +87,4 @@ public class ContactApplication {
         }
 
     }
-
+}

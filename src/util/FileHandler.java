@@ -31,11 +31,7 @@ public class FileHandler {
 
     public void writeToFile(List<String> contents, boolean append) {
     try {
-        if(append) {
-            Files.write(this.path, contents, StandardOpenOption.APPEND);
-        } else {
-            Files.write(this.path, contents);
-        }
+        Files.write(this.path, contents);
     }
     catch(IOException e){
         System.out.printf("Error: %s\n", e.getMessage());
